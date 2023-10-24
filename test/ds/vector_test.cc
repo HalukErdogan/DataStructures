@@ -1,5 +1,6 @@
 #include "ds/vector.hpp"
-#include "gtest/gtest.h"
+
+#include <gtest/gtest.h>
 
 TEST(VectorTest, DefaultConstructor) {
     ds::Vector<int> v;
