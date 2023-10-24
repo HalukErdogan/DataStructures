@@ -8,8 +8,8 @@ project(ds)
 add_subdirectory(external) 
 
 # data structure library (ds)
-add_library(ds STATIC src/ds/vector)
-target_include_directories(ds PUBLIC include)
+add_library(ds INTERFACE)
+target_include_directories(ds INTERFACE include)
 
 # test
 add_subdirectory(test)
