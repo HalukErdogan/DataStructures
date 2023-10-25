@@ -101,6 +101,38 @@ class Vector {
         }
     }
 
+    // Remove the element located in index idx
+    void Erase(const std::size_t &idx) {
+        if (idx >= size_) {
+            throw std::out_of_range("Index " + std::to_string(idx) +
+                                    " is out of range.");
+        }
+
+        for (std::size_t i = idx + 1u; i<size_; ++i) {
+            data_[i-1] = data_[i];
+        }
+        --size_;
+    }
+
+    // Insert an element at a specific index
+    void Insert(const std::size_t &idx, const T& value) {
+        if (idx > size_) {
+            throw std::out_of_range("Index " + std::to_string(idx) +
+                                    " is out of range.");
+        }
+
+        if (size_ == capacity_) {
+            Reserve(capacity_ * 2);
+        }
+
+        for (std::size_t i = size_; i > idx; --i) {
+            data_[i] = data_[i-1];
+        }
+
+        data_[idx] = value;
+        ++size_;
+    }
+
     // Returns the reference of the element at the index idx
     T& At(const std::size_t& idx) {
         if (idx >= size_) {

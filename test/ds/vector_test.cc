@@ -80,3 +80,25 @@ TEST(VectorTest, MoveAssignmentOperator) {
     v2 = std::move(v1);
     EXPECT_EQ(v2.At(0), 1);
 }
+
+TEST(VectorTest, Erase) {
+    ds::Vector<int> v;
+    v.PushBack(1);
+    v.PushBack(2);
+    v.PushBack(3);
+    v.Erase(1);
+    EXPECT_EQ(v.Size(), 2);
+    EXPECT_EQ(v.At(0), 1);
+    EXPECT_EQ(v.At(1), 3);
+}
+
+TEST(VectorTest, Insert) {
+    ds::Vector<int> v;
+    v.PushBack(1);
+    v.PushBack(3);
+    v.Insert(1, 2);
+    EXPECT_EQ(v.Size(), 3);
+    EXPECT_EQ(v.At(0), 1);
+    EXPECT_EQ(v.At(1), 2);
+    EXPECT_EQ(v.At(2), 3);
+}
